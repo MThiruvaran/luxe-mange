@@ -1,11 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+require("dotenv").config();
+
 const app = express();
 
 const port = process.env.PORT || 8080;
-const connectionString =
-  "mongodb+srv://luxe-mange:LuxeMange@luxe-mange.rqnyf.mongodb.net/test";
+const connectionString = process.env.MONGODB_CONNECTION_STRING;
 
 const chefRouter = require("./routes/chefRoutes");
 const hotelRouter = require("./routes/hotelRoutes");
