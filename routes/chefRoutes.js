@@ -7,7 +7,7 @@ const chefSchema = require("../models/chefModel");
 
 const saltRounds = 5;
 
-router.post("/chef", async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     const chef = await chefSchema.findOne({ email: req.body.email });
     if (chef) {
