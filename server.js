@@ -10,9 +10,11 @@ const connectionString = process.env.MONGODB_CONNECTION_STRING;
 
 const chefRouter = require("./routes/chefRoutes");
 const hotelRouter = require("./routes/hotelRoutes");
+const hotelInfoRouter = require("./routes/hotelInfoRoutes");
 
-app.use("api/v1/chef", chefRouter);
-app.use("api/v1/hotel", hotelRouter);
+app.use("/api/v1/chef", chefRouter);
+app.use("/api/v1/hotel", hotelRouter);
+app.use("/api/v1/hotelinfo", hotelInfoRouter);
 
 mongoose.connect(
   connectionString,
