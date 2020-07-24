@@ -3,7 +3,7 @@ mongoose.set("useCreateIndex", true);
 
 const hotelInfoSchema = mongoose.Schema({
   email: {
-    type: Number,
+    type: String,
     required: true,
   },
   contactNumber: {
