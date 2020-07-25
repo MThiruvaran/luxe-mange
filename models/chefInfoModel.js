@@ -38,10 +38,6 @@ const chefInfoSchema = mongoose.Schema({
   transport: {
     type: Boolean,
   },
-  cv: {
-    type: String,
-    required: true,
-  },
   specialities: {
     type: Array,
     default: [],

@@ -12,11 +12,13 @@ const chefRouter = require("./routes/chefRoutes");
 const chefInfoRouter = require("./routes/chefInfoRoutes");
 const hotelRouter = require("./routes/hotelRoutes");
 const hotelInfoRouter = require("./routes/hotelInfoRoutes");
+const jobsRouter = require("./routes/jobsRoutes");
 
 app.use("/api/v1/chef", chefRouter);
 app.use("/api/v1/hotel", hotelRouter);
 app.use("/api/v1/hotelinfo", hotelInfoRouter);
 app.use("/api/v1/chefinfo", chefInfoRouter);
+app.use("/api/v1/jobs", jobsRouter);
 
 mongoose.connect(
   connectionString,

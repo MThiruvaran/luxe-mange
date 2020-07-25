@@ -22,7 +22,6 @@ router.post("/create", upload.single("image"), async (req, res) => {
     latitude: req.body.latitude,
     longitude: req.body.longitude,
     experience: req.body.experience,
-    cv: req.body.cv,
     referal: req.body.referal,
     terms: req.body.terms,
   });
