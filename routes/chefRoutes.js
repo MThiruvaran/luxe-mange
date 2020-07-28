@@ -56,11 +56,7 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    if (
-      bcrypt.compare(req.body.password, chef.password, (error, result) => {
-        return result;
-      })
-    ) {
+    if (bcrypt.compareSync(req.body.password, chef.password)) {
       res.status(200).json({
         status: "success",
         data: {

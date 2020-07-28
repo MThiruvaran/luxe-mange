@@ -22,9 +22,7 @@ router.post("/hotel", async (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       role: req.body.role,
-      password: bcrypt.hash(req.body.password, saltRounds, (error, result) => {
-        return result;
-      }),
+      password: bcrypt.hashSync(req.body.password, saltRounds),
     });
 
     const newhotel = await item.save();
@@ -52,11 +50,7 @@ router.post("/login", async (req, res) => {
       });
     }
 
-    if (
-      bcrypt.compare(req.body.password, hotel.password, (error, result) => {
-        return result;
-      })
-    ) {
+    if (bcrypt.compareSync(req.body.password, hotel.password)) {
       res.status(200).json({
         status: "success",
         data: {
@@ -64,7 +58,12 @@ router.post("/login", async (req, res) => {
         },
       });
     }
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json({
+      status: "failed",
+      message: error,
+    });
+  }
 });
 
 module.exports = router;
