@@ -3,11 +3,7 @@ const router = express.Router();
 
 const jobsSchema = require("../models/jobsModel");
 
-const multer = require("multer");
-const upload = multer({ storage: multer.memoryStorage() });
-
-router.post("/create", upload.single("image"), async (req, res) => {
-  const image = req.file.buffer.toString("base64");
+router.post("/create", async (req, res) => {
   const jobInfo = new jobsSchema({
     email: req.body.email,
     hotelName: req.body.hotelName,
@@ -15,7 +11,7 @@ router.post("/create", upload.single("image"), async (req, res) => {
     yourPosition: req.body.yourPosition,
     address: req.body.address,
     transport: req.body.transport,
-    image: image,
+    image: req.body.image,
     description: req.body.description,
     specialities: req.body.specialities,
     latitude: req.body.latitude,

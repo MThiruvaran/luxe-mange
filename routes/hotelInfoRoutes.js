@@ -3,11 +3,7 @@ const router = express.Router();
 
 const hotelInfoSchema = require("../models/hotelInfoModel");
 
-const multer = require("multer");
-const upload = multer({ storage: multer.memoryStorage() });
-
-router.post("/create", upload.single("image"), async (req, res) => {
-  const image = req.file.buffer.toString("base64");
+router.post("/create", async (req, res) => {
   const newHotelInfo = new hotelInfoSchema({
     email: req.body.email,
     contactNumber: req.body.contactNumber,
@@ -17,7 +13,7 @@ router.post("/create", upload.single("image"), async (req, res) => {
     accomodation: req.body.accomodation,
     numberOfStaff: req.body.numberOfStaff,
     address: req.body.address,
-    image: image,
+    image: req.body.image,
     description: req.body.description,
     specialities: req.body.specialities,
     siteLink: req.body.siteLink,

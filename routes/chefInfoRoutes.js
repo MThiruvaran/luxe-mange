@@ -3,11 +3,7 @@ const router = express.Router();
 
 const chefInfoSchema = require("../models/chefInfoModel");
 
-const multer = require("multer");
-const upload = multer({ storage: multer.memoryStorage() });
-
-router.post("/create", upload.single("image"), async (req, res) => {
-  const image = req.file.buffer.toString("base64");
+router.post("/create", async (req, res) => {
   const newChefInfo = new chefInfoSchema({
     email: req.body.email,
     contactNumber: req.body.contactNumber,
@@ -16,7 +12,7 @@ router.post("/create", upload.single("image"), async (req, res) => {
     dob: req.body.dob,
     address: req.body.address,
     transport: req.body.transport,
-    image: image,
+    image: req.body.image,
     description: req.body.description,
     specialities: req.body.specialities,
     latitude: req.body.latitude,
