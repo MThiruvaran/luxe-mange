@@ -7,7 +7,7 @@ const hotelSchema = require("../models/hotelModel");
 
 const saltRounds = 5;
 
-router.post("/hotel", async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     const hotel = await hotelSchema.findOne({ email: req.body.email });
     if (hotel) {
