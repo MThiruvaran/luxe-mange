@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const port = process.env.PORT || 8080;
 const connectionString = process.env.MONGODB_CONNECTION_STRING;

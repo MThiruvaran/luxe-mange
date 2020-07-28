@@ -8,8 +8,14 @@ const chefSchema = require("../models/chefModel");
 const saltRounds = 5;
 
 router.post("/register", async (req, res) => {
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const role = req.body.role;
+  const email = req.body.email;
+  const password = bcrypt.hashSync(req.body.password, saltRounds);
+
   try {
-    const chef = await chefSchema.findOne({ email: req.body.email });
+    const chef = await chefSchema.findOne({ email: email });
     if (chef) {
       return res.status(204).json({
         status: "success",
@@ -18,13 +24,11 @@ router.post("/register", async (req, res) => {
     }
 
     const item = new chefSchema({
-      fristName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      role: req.body.role,
-      password: bcrypt.hash(req.body.password, saltRounds, (error, result) => {
-        return result;
-      }),
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      role: role,
+      password: password,
     });
 
     const newChef = await item.save();
