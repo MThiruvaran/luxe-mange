@@ -18,7 +18,7 @@ router.post("/register", async (req, res) => {
     }
 
     const item = new hotelSchema({
-      fristName: req.body.firstName,
+      firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
       role: req.body.role,
